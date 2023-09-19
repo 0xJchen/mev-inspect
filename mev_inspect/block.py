@@ -102,17 +102,17 @@ async def _find_or_fetch_base_fee_per_gas(
 
 
 async def _fetch_block_timestamp(w3, block_number: int) -> int:
-    block_json = await w3.eth.get_block(block_number)
+    block_json = await w3.eth.get_block(hex(block_number))
     return block_json["timestamp"]
 
 
 async def _fetch_block_receipts(w3, block_number: int) -> List[Receipt]:
-    receipts_json = await w3.eth.get_block_receipts(block_number)
+    receipts_json = await w3.eth.get_block_receipts(hex(block_number))
     return [Receipt(**receipt) for receipt in receipts_json]
 
 
 async def _fetch_block_traces(w3, block_number: int) -> List[Trace]:
-    traces_json = await w3.eth.trace_block(block_number)
+    traces_json = await w3.eth.trace_block(hex(block_number))
     return [Trace(**trace_json) for trace_json in traces_json]
 
 

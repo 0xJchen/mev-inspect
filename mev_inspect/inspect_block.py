@@ -61,7 +61,7 @@ async def inspect_block(
     inspect_db_session: orm.Session,
     w3: Web3,
     trace_classifier: TraceClassifier,
-    block_number: int,
+    block_number: any,
     trace_db_session: Optional[orm.Session],
     should_write_classified_traces: bool = True,
 ):
